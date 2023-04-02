@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search</title>
+    <link rel="stylesheet" href="../static/style.css">
+  </head>
+  <body>
+    <div class="box1">MyEngine</div>
+    <div id="search-container">
+      <form action="search" method="POST">
+        <input type="text" name="search_query" placeholder="Word">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+    {% if results %}
+    <p>Number of responses for ({{results[0][0]}}): {{results | length}}</p>
+      {% for result in results %}
+        <p>{{loop.index}}. {{result[2]}} ({{result[1]}})</p>
+      {% endfor %}
+    {% endif %}
+  </body>
+</html>
