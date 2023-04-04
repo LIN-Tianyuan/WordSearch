@@ -1,0 +1,25 @@
+What is big data?
+Big data is a combination of structured, semistructured and unstructured data collected by organizations that can be mined for information and used in machine learning projects, predictive modeling and other advanced analytics applications.
+
+Systems that process and store big data have become a common component of data management architectures in organizations, combined with tools that support big data analytics uses. Big data is often characterized by the three Vs:
+
+the large volume of data in many environments;
+the wide variety of data types frequently stored in big data systems; and
+the velocity at which much of the data is generated, collected and processed.
+These characteristics were first identified in 2001 by Doug Laney, then an analyst at consulting firm Meta Group Inc. Gartner further popularized them after it acquired Meta Group in 2005. More recently, several other V's have been added to different descriptions of big data, including veracity, value and variability.
+
+Although big data doesn't equate to any specific volume of data, big data deployments often involve terabytes, petabytes and even exabytes of data created and collected over time.
+
+THIS ARTICLE IS PART OF
+
+The ultimate guide to big data for businesses
+Which also includes:
+8 benefits of using big data for businesses
+What a big data strategy includes and how to build one
+10 big data challenges and how to address them
+DOWNLOAD
+1
+Download this entire guide for FREE now!
+
+Why is big data important?
+Companies use big data in their systems to improve operations, provide better customer service, create personalized marketing campaigns and take other actions that, ultimately, can increase revenue and profits. Businesses that use it effectively hold a potential competitive advantage over those that don't because they're able to make faster and more informed business decisions.

@@ -18,6 +18,7 @@ def get_stopwords():
 # Supprimer le stopwords, les chaînes vides et les signes de ponctuation
 def index(file):
     keywords = get_stopwords()
+    delete_words = []
     with open(file, 'r') as file:
         content = file.read()
         words = content.split()
@@ -31,6 +32,7 @@ def index(file):
             new_word = word.split(',')
             words.extend(new_word)
 
+
     # Supprimer un symbole spécial entre les mots
     for word in words:
         for punctuation in punctuations:
@@ -40,9 +42,12 @@ def index(file):
                 words.extend(new_word)
 
     # Supprimer le stopwords, les chaînes vides et les signes de ponctuation
-    for word in words:
-        if (word.lower() in keywords) or (word == '') or (word in punctuations):
-            words.remove(word)
+    i = 0
+    while i < len(words):
+        if words[i].lower() in keywords or words[i] == '' or words[i] in punctuations or len(words[i]) == 1:
+            words.remove(words[i])
+            i -= 1
+        i = i + 1
 
     return words
 

@@ -1,3 +1,4 @@
+à
 alors
 au
 aussi
@@ -45,6 +46,7 @@ moins
 mon
 même
 ni
+ne
 notre
 ou
 où
@@ -64,6 +66,7 @@ quels
 qui
 sa
 sans
+se
 ses
 seulement
 si

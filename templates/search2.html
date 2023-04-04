@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>WordSearch</title>
+	<style>
+        .logo {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .logo img {
+            border-radius: 100px;
+        }
+		body {
+			background-color: #F6F6F6;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			line-height: 1.5;
+		}
+
+		.container {
+			margin: 0 auto;
+			padding: 20px;
+			max-width: 600px;
+
+		}
+
+		.search-box {
+			display: flex;
+			align-items: center;
+			background-color: #FFFFFF;
+			border: 1px solid #CCCCCC;
+			border-radius: 20px;
+			padding: 10px;
+		}
+
+		.search-box input[type="text"] {
+			border: none;
+			outline: none;
+			flex: 1;
+			margin-left: 10px;
+			font-size: 16px;
+		}
+
+		.search-box input[type="submit"] {
+			background-color: #337AB7;
+			color: #FFFFFF;
+			border: none;
+			border-radius: 20px;
+			padding: 10px 20px;
+			cursor: pointer;
+			font-size: 16px;
+			margin-left: 10px;
+		}
+
+		.search-box input[type="submit"]:hover {
+			background-color: #286090;
+		}
+	</style>
+</head>
+<body>
+    <div class="logo">
+        <img src="../static/logo.png" alt="Search Icon" width="600" height="300" style="margin: 0 auto;">
+    </div>
+	<div class="container">
+		<form class="search-box">
+			<img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="Search Icon" width="30" height="30">
+			<input type="text" placeholder="Word">
+			<input type="submit" value="Search">
+		</form>
+	</div>
+</body>
+</html>

@@ -1,22 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Search</title>
+<head>
+	<meta charset="UTF-8">
+	<title>WordSearch</title>
     <link rel="stylesheet" href="../static/style.css">
-  </head>
-  <body>
-    <div class="box1">MyEngine</div>
-    <div id="search-container">
-      <form action="search" method="POST">
-        <input type="text" name="search_query" placeholder="Word">
-        <button type="submit">Search</button>
-      </form>
+</head>
+<body>
+    <div class="logo">
+        <img src="../static/logo.png" alt="Search Icon" width="600" height="300" style="margin: 0 auto;">
     </div>
-    {% if results %}
-    <p>Number of responses for ({{results[0][0]}}): {{results | length}}</p>
-      {% for result in results %}
-        <p>{{loop.index}}. {{result[2]}} ({{result[1]}})</p>
-      {% endfor %}
+	<div class="container">
+		<form class="search-box" action="search" method="POST">
+			<img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="Search Icon" width="30" height="30">
+			<input type="text" name="search_query" placeholder="Word">
+			<input type="submit" value="Search">
+		</form>
+        <form method="POST" action="uploadFile" enctype="multipart/form-data">
+          <label class="upload-btn">
+              <input type="file" name="file" multiple><br>
+              <input type="submit" value="Upload file">
+          </label>
+        </form>
+	</div>
+  {% if results %}
+    <h2>{{results | length}} files containing the word : {{results[0][0]}}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Document</th>
+          <th>Frequency</th>
+        </tr>
+      </thead>
+        {% for result in results %}
+      <tbody>
+        <tr>
+          <td>{{loop.index}}</td>
+          <td><a href="../static/File/{{result[2]}}">{{result[2]}}</a></td>
+          <td>{{result[1]}}</td>
+        </tr>
+      </tbody>
+        {% endfor %}
+    </table>
     {% endif %}
-  </body>
+</body>
 </html>
