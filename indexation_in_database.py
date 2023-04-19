@@ -1,8 +1,14 @@
 import pymysql
 from indexation import *
+import os
 
-file = ['file.txt', 'file2.txt']
-path = ['Web/static/File/file.txt', 'Web/static/File/file2.txt']
+filePath = '/Users/citron/Alex/Info/Univ/web/Web/static/File'
+def get_file_and_path():
+    files = []
+    for i, j, k in os.walk(filePath):
+        files = k
+    return files
+
 word_freq_doc = []
 def fileList(file):
     new_list = []
@@ -13,23 +19,22 @@ def fileList(file):
             new_list.append(tup)
     return new_list
 
-new_list = fileList(file)
+
 # Obtenir une liste de mots
 def get_word_list(list):
     word_list = []
     for i in list:
         word_list.append(i[0])
     return word_list
+
+
 # Obtenir une liste de documents
 def get_document_list(file):
     document_list = []
     for i in range(len(file)):
-        tup = (file[i], path[i])
+        tup = (file[i], filePath)
         document_list.append(tup)
     return document_list
-
-word_list = get_word_list(new_list)
-document_list = get_document_list(file)
 
 # Créer une connexion
 def get_cursor():
@@ -47,6 +52,7 @@ def get_cursor():
 
 def insert_words(db, cursor):
     try:
+        word_list = get_word_list(fileList(get_file_and_path()))
         sql = "insert into word(word) values (%s)"
         cursor.executemany(sql, word_list)
         # cursor.executemany(sql2, document_list)
@@ -61,6 +67,7 @@ def insert_words(db, cursor):
 
 def insert_documents(db, cursor):
     try:
+        document_list = get_document_list(get_file_and_path())
         sql = "insert into document(document, path) value (%s, %s)"
         cursor.executemany(sql, document_list)
         # cursor.executemany(sql2, document_list)
@@ -75,7 +82,7 @@ def insert_documents(db, cursor):
 
 def insert_words_freqs_docs(db, cursor):
     try:
-        for element in new_list:
+        for element in fileList(get_file_and_path()):
             sql1 = "select id from word where word = %s"
             sql2 = "select id from document where document = %s"
             # str1 = "\"" + i[0] + "\""
@@ -99,12 +106,29 @@ def insert_words_freqs_docs(db, cursor):
     finally:
         db.close()
 
+def delete_database(db, cursor):
+    try:
+        sql1 = "delete from word"
+        cursor.execute(sql1)
+        sql2 = "delete from document"
+        cursor.execute(sql2)
+        sql3 = "delete from word_document_frequency"
+        cursor.execute(sql3)
+        # cursor.executemany(sql2, document_list)
+        db.commit()
+        print("Effacer les données avec succès.")
+    except:
+        print("Échec de la suppression des mots.")
+        db.rollback()
+    finally:
+        db.close()
+
 def insert_alldata():
     db1, cursor1 = get_cursor()
-    insert_words(db1, cursor1)
+    delete_database(db1, cursor1)
     db2, cursor2 = get_cursor()
-    insert_documents(db2, cursor2)
+    insert_words(db2, cursor2)
     db3, cursor3 = get_cursor()
-    insert_words_freqs_docs(db3, cursor3)
-
-insert_alldata()
+    insert_documents(db3, cursor3)
+    db4, cursor4 = get_cursor()
+    insert_words_freqs_docs(db4, cursor4)

@@ -1,4 +1,5 @@
 import string
+filePath = '/Users/citron/Alex/Info/Univ/web/Web/static/File'
 
 # Obtenir des stopwords du fichier
 def get_stopwords():
@@ -16,10 +17,9 @@ def get_stopwords():
 
 
 # Supprimer le stopwords, les chaînes vides et les signes de ponctuation
-def index(file):
+def index(new_file):
     keywords = get_stopwords()
-    delete_words = []
-    with open(file, 'r') as file:
+    with open(filePath + "/" + new_file, 'r') as file:
         content = file.read()
         words = content.split()
 
